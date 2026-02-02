@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Block Transpose</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        img { max-width: 100%; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>Trasposizione a blocchi</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" required><br><br>
+
+    Larghezza blocchi:
+    <input type="number" name="block_w" value="80"><br><br>
+
+    Altezza blocchi:
+    <input type="number" name="block_h" value="80"><br><br>
+
+    <button type="submit">Trasponi</button>
+</form>
+
+{% if output_image %}
+    <h2>Risultato</h2>
+    <img src="{{ output_image }}?{{ range(1000)|random }}">
+    <br><br>
+    <a href="/download">⬇️ Scarica immagine</a>
+{% endif %}
+
+</body>
+</html>
