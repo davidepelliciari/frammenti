@@ -33,4 +33,14 @@ def transpose_blocks(input_path, output_path, block_w, block_h):
         for j, block in enumerate(row):
             out_img.paste(block, (j * block_w, i * block_h))
 
+    MAX_SIZE = 1200
+
+    w, h = out_img.size
+    scale = min(MAX_SIZE / w, MAX_SIZE / h, 1)
+
+    new_w = int(w * scale)
+    new_h = int(h * scale)
+
+    out_img = out_img.resize((new_w, new_h), Image.LANCZOS)
+    
     out_img.save(output_path)
